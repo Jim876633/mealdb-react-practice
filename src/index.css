@@ -1,16 +1,16 @@
 /*Variables*/
 :root {
     --primaryColor: #f0a31c;
-    --primaryDarkColor: #d6381d;
+    --primaryDarkColor: #e0482d;
     --mainWhite: #fff;
     --darkWhite: #ffedc9;
     --mainBlack: #222;
-    --primarymiddleColor: #e3600f;
+    --primarymiddleColor: #f9772c;
     --titleFontSize: 3rem;
     --titleMargin: 2rem auto;
-    --alertColor: #f4797990;
+    --alertColor: #fbc2c270;
     --alertOutlineColor: #d6381d;
-    --focusColor: #80ec8089;
+    --focusColor: #cbffcb89;
     --focusOutlineColor: #1eb31e;
 }
 
@@ -23,7 +23,7 @@
 body {
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
-    background: var(--primaryColor);
+    background: rgba(240, 163, 28, 0.6);
 }
 a {
     text-decoration: none;
@@ -146,7 +146,7 @@ h2 {
     border: none;
     font-size: 1rem;
     padding: 0.2rem 1rem;
-    width: 85%;
+    flex: 9 9;
 }
 .search-input:hover,
 .search-input:focus,
@@ -159,7 +159,7 @@ h2 {
     padding: 0.2rem 0.5rem;
     font-size: 1rem;
     line-height: 1rem;
-    width: 15%;
+    flex: 1 1;
 }
 .search-btn:hover {
     cursor: pointer;
@@ -182,14 +182,15 @@ h2 {
 /*Category*/
 .category-list {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin-top: 1rem;
     padding: 0;
 }
 .category-btn {
+    width: 100%;
     margin: 0.5rem;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 1rem;
     display: flex;
     align-items: center;
     background: var(--primarymiddleColor);
@@ -200,7 +201,7 @@ h2 {
 }
 .category-title {
     font-size: 1.2rem;
-    margin: 0;
+    margin: 0 1rem;
 }
 /*MealList*/
 .mealList {
@@ -214,9 +215,33 @@ h2 {
     width: 10rem;
     border-radius: 1rem;
     overflow: hidden;
+    position: relative;
 }
 .card-title {
     margin: 0;
+}
+.card-image {
+    background: #000;
+    height: 10rem;
+    position: relative;
+}
+.card-image > span {
+    color: var(--mainWhite);
+    display: block;
+    margin: 4.5rem auto;
+    text-align: center;
+}
+.card-image > img {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.card-body {
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 .card-text {
     margin: 0.5rem 0;
@@ -246,11 +271,13 @@ h2 {
     width: 100%;
     height: 100%;
 }
-.card-body {
+.card-detail .card-body {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-right: 2rem;
+    overflow: auto;
 }
 .card-detail .card-title {
     font-size: 3rem;
@@ -313,5 +340,9 @@ h2 {
     }
     .mealList {
         width: 100%;
+        padding: 0;
+    }
+    .category-btn {
+        width: 45%;
     }
 }
