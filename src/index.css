@@ -1,13 +1,317 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/*Variables*/
+:root {
+    --primaryColor: #f0a31c;
+    --primaryDarkColor: #d6381d;
+    --mainWhite: #fff;
+    --darkWhite: #ffedc9;
+    --mainBlack: #222;
+    --primarymiddleColor: #e3600f;
+    --titleFontSize: 3rem;
+    --titleMargin: 2rem auto;
+    --alertColor: #f4797990;
+    --alertOutlineColor: #d6381d;
+    --focusColor: #80ec8089;
+    --focusOutlineColor: #1eb31e;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*Global style*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    background: var(--primaryColor);
+}
+a {
+    text-decoration: none;
+    color: var(--mainBlack);
+}
+li {
+    list-style: none;
+}
+img {
+    width: 100%;
+    display: block;
+}
+h1,
+h2 {
+    margin: 0;
+}
+.btn {
+    border-radius: 10rem;
+    background: var(--mainWhite);
+}
+.btn:hover {
+    cursor: pointer;
+}
+/*Loading*/
+.loading {
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    font-size: var(--titleFontSize);
+    margin: var(--titleMargin);
+}
+/*Navbar*/
+.navBar {
+    width: 100%;
+    height: 5rem;
+    background: var(--primaryDarkColor);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 2;
+}
+.navBar > a {
+    color: var(--mainWhite);
+}
+.logo {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: auto;
+    font-size: 2rem;
+}
+.logo-image {
+    height: 100%;
+    padding: 0.5rem;
+}
+.logo-title {
+    display: block;
+}
+.link-home,
+.link-about {
+    margin-right: min(3vw, 1.5rem);
+    font-size: min(4vw, 1.5rem);
+}
+
+.link-about:hover,
+.link-about:active,
+.link-home:hover,
+.link-home:active {
+    transform: translateY(-0.2rem);
+    transition: transform 0.2s;
+    color: var(--mainBlack);
+}
+.togglebtn-icon {
+    color: var(--mainBlack);
+    font-size: 1.2rem;
+    display: none;
+    transition: all 0.5s;
+}
+.togglebtn-icon:hover {
+    cursor: pointer;
+    transform: rotate(90deg);
+    color: var(--mainWhite);
+}
+/*About*/
+.about-title {
+    font-size: var(--titleFontSize);
+    color: var(--darkWhite);
+    margin: var(--titleMargin);
+    text-align: center;
+}
+.about-text {
+    width: 70%;
+    margin: auto;
+    color: var(--mainBlack);
+    font-size: 1.2rem;
+}
+/*Container*/
+.home_container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+}
+.sideBar {
+    background: var(--darkWhite);
+    width: 30%;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+/*SearchForm*/
+.searchForm {
+    width: 100%;
+    display: flex;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+.search-input {
+    border: none;
+    font-size: 1rem;
+    padding: 0.2rem 1rem;
+    width: 85%;
+}
+.search-input:hover,
+.search-input:focus,
+.search-input:active {
+    outline: none;
+}
+.search-btn {
+    border: none;
+    background: var(--primaryColor);
+    padding: 0.2rem 0.5rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    width: 15%;
+}
+.search-btn:hover {
+    cursor: pointer;
+}
+.search-icon {
+    vertical-align: middle;
+}
+.search-inValid {
+    box-shadow: 0 0 5px 2px var(--primaryDarkColor);
+}
+.search-Valid {
+    box-shadow: 0 0 5px 2px var(--focusOutlineColor);
+}
+.search-Valid .search-input {
+    background: var(--focusColor);
+}
+.search-inValid .search-input {
+    background: var(--alertColor);
+}
+/*Category*/
+.category-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding: 0;
+}
+.category-btn {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    background: var(--primarymiddleColor);
+    color: var(--darkWhite);
+}
+.category-image {
+    width: 3rem;
+}
+.category-title {
+    font-size: 1.2rem;
+    margin: 0;
+}
+/*MealList*/
+.mealList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 70%;
+}
+.card {
+    width: 10rem;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+.card-title {
+    margin: 0;
+}
+.card-text {
+    margin: 0.5rem 0;
+}
+.meal-btn {
+    background: var(--primarymiddleColor);
+    color: var(--darkWhite);
+}
+/*Detail*/
+
+.card-detail {
+    width: 80%;
+    height: 25rem;
+    margin: 3rem auto;
+    position: relative;
+}
+
+.row {
+    height: 100%;
+}
+.detail-image-block {
+    height: 100%;
+    overflow: hidden;
+}
+.detail-image-block > img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 2rem;
+}
+.card-detail .card-title {
+    font-size: 3rem;
+}
+.card-detail .card-text {
+    margin: 0.8rem 0;
+}
+.card-text > span {
+    background: var(--primaryColor);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+    text-transform: capitalize;
+}
+.card-detail .card-text + .meal-btn {
+    margin-top: auto;
+    align-self: flex-end;
+}
+/*media screen*/
+
+@media (max-width: 768px) {
+    .togglebtn-icon {
+        display: block;
+    }
+    .detail-image-block {
+        width: 100%;
+    }
+    .detail-image-block::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: var(--mainBlack);
+        opacity: 0.5;
+    }
+    .card-detail .card-body {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        color: var(--darkWhite);
+    }
+    .sideBar {
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        transform: translateY(-100%);
+        transition: all 0.5s;
+        background: var(--darkWhite);
+    }
+    .sideBar.toggle {
+        transform: translateY(5rem);
+    }
+    .mealList {
+        width: 100%;
+    }
 }
